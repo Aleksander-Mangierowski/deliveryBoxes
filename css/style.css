@@ -1,0 +1,929 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-family: "rooney-sans",sans-serif; }
+
+.container {
+  box-sizing: border-box;
+  width: 960px;
+  margin: 0 auto; }
+  @media (max-width: 768px) {
+    .container {
+      width: 100%;
+      padding: 0 15px; } }
+
+.btn {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 220px;
+  height: 50px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 15px;
+  border: 0; }
+  @media (max-width: 768px) {
+    .btn {
+      width: 45%; } }
+
+.underline {
+  text-decoration: underline; }
+
+.dark-layer {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1; }
+
+.popup {
+  position: fixed;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 560px;
+  font-size: 18px;
+  opacity: 0; }
+  @media (max-width: 768px) {
+    .popup {
+      width: 73%;
+      min-width: 300px; } }
+  .popup .popupHeader {
+    position: relative; }
+    .popup .popupHeader .text {
+      height: 48px;
+      line-height: 48px;
+      padding: 0 20px;
+      background: #2980b9;
+      color: #fff; }
+    .popup .popupHeader .close {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 23px;
+      height: 23px;
+      border: none;
+      cursor: pointer;
+      background-image: url("../img/btnClose.png"); }
+      .popup .popupHeader .close:hover {
+        background-position: 0 -23px; }
+  .popup .popupContent {
+    color: #141d1e;
+    background-color: #fff;
+    padding: 20px; }
+
+.higherZIndex {
+  z-index: 1010; }
+
+.content .paginator .blockTotal, .content .form .formContent .formBlock .totalPrice {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background-color: #3fb09d;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 15px; }
+
+.content .checkbox {
+  display: none;
+  padding-top: 15px; }
+  .content .checkbox .checkLabel {
+    cursor: pointer;
+    margin-right: 20px; }
+  .content .checkbox .checkboxOSR {
+    cursor: pointer; }
+.content .flexCheckbox {
+  display: flex;
+  align-items: center; }
+.content .paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 30px; }
+  @media (max-width: 768px) {
+    .content .paginator {
+      display: none; } }
+  .content .paginator .sections {
+    position: relative;
+    display: flex;
+    background-color: #cfcfcf; }
+    .content .paginator .sections .ordinarySection {
+      position: relative;
+      background-color: #cfcfcf; }
+      .content .paginator .sections .ordinarySection:nth-child(1)::before {
+        content: "1"; }
+      .content .paginator .sections .ordinarySection:nth-child(1)::after {
+        content: "Items to send"; }
+      .content .paginator .sections .ordinarySection:nth-child(2)::before {
+        content: "2"; }
+      .content .paginator .sections .ordinarySection:nth-child(2)::after {
+        content: "Addresses"; }
+      .content .paginator .sections .ordinarySection:nth-child(3)::before {
+        content: "3"; }
+      .content .paginator .sections .ordinarySection:nth-child(3)::after {
+        content: "Pick up dates"; }
+      .content .paginator .sections .ordinarySection:nth-child(4)::before {
+        content: "4"; }
+      .content .paginator .sections .ordinarySection:nth-child(4)::after {
+        content: "Confirm"; }
+    .content .paginator .sections .section {
+      position: relative;
+      width: 184px;
+      height: 26px;
+      cursor: pointer; }
+      .content .paginator .sections .section::before {
+        position: absolute;
+        z-index: 10;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 26px;
+        height: 26px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 11px;
+        font-weight: 900;
+        color: #cfcfcf; }
+      .content .paginator .sections .section::after {
+        pointer-events: none;
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        color: #cfcfcf;
+        cursor: default;
+        transition: color 1.2s; }
+    .content .paginator .sections .currentNumber::before {
+      color: #DB0E7E;
+      cursor: default; }
+    .content .paginator .sections .currentDesc::after {
+      color: #333; }
+    .content .paginator .sections .ready {
+      background-color: rgba(219, 14, 126, 0.25); }
+    .content .paginator .sections .activeSection {
+      position: absolute;
+      cursor: default;
+      background-color: #DB0E7E; }
+    .content .paginator .sections .progressMask {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 736px;
+      height: 26px;
+      cursor: pointer;
+      background-image: url("../img/bookProgress.png"); }
+  .content .paginator .blockTotal {
+    justify-content: center;
+    width: 224px;
+    height: 50px; }
+.content .progressAdapt {
+  position: relative;
+  display: none;
+  margin: 35px auto; }
+  @media (max-width: 768px) {
+    .content .progressAdapt {
+      display: block; } }
+  .content .progressAdapt .progressAdaptSections {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 26px; }
+    .content .progressAdapt .progressAdaptSections .adaptSection {
+      width: 33%;
+      height: 6px;
+      background-color: #cfcfcf; }
+    .content .progressAdapt .progressAdaptSections .ready {
+      background-color: rgba(219, 14, 126, 0.25); }
+  .content .progressAdapt .progressAdaptNumbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 15px; }
+    .content .progressAdapt .progressAdaptNumbers .adaptNumber {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      width: 26px;
+      height: 26px;
+      color: #cfcfcf;
+      background-color: #fff;
+      font-size: 14px;
+      border: 5px solid #cfcfcf;
+      border-radius: 50%; }
+      .content .progressAdapt .progressAdaptNumbers .adaptNumber:nth-child(1):after {
+        content: "1"; }
+      .content .progressAdapt .progressAdaptNumbers .adaptNumber:nth-child(2):after {
+        content: "2"; }
+      .content .progressAdapt .progressAdaptNumbers .adaptNumber:nth-child(3):after {
+        content: "3"; }
+      .content .progressAdapt .progressAdaptNumbers .adaptNumber:nth-child(4):after {
+        content: "4"; }
+    .content .progressAdapt .progressAdaptNumbers .ready {
+      color: rgba(219, 14, 126, 0.25);
+      border-color: rgba(219, 14, 126, 0.25); }
+    .content .progressAdapt .progressAdaptNumbers .active {
+      color: #DB0E7E;
+      border-color: #DB0E7E; }
+.content .form {
+  margin-top: 30px; }
+  .content .form .formContent {
+    transition: all 2s; }
+    .content .form .formContent .formBlock {
+      display: none; }
+      .content .form .formContent .formBlock .insurance {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: #515151;
+        font-size: 16px;
+        padding: 10px; }
+        @media (max-width: 768px) {
+          .content .form .formContent .formBlock .insurance {
+            flex-direction: column; } }
+        .content .form .formContent .formBlock .insurance .textInsurance {
+          color: #fff; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .insurance .textInsurance {
+              text-align: center; } }
+        .content .form .formContent .formBlock .insurance .helpIcon {
+          position: relative;
+          display: inline-table;
+          width: 22px;
+          height: 22px;
+          background: url("../img/helpIcon.png");
+          cursor: pointer;
+          margin: 10px 10px 10px 5px; }
+        .content .form .formContent .formBlock .insurance .insuranceSelect {
+          width: 280px;
+          color: #555;
+          font-size: 16px; }
+      .content .form .formContent .formBlock .totalPrice {
+        display: none;
+        justify-content: space-between;
+        padding: 20px 15px;
+        margin-top: 15px; }
+        @media (max-width: 768px) {
+          .content .form .formContent .formBlock .totalPrice {
+            display: flex; } }
+      .content .form .formContent .formBlock .itemsToSend {
+        display: flex; }
+        @media (max-width: 768px) {
+          .content .form .formContent .formBlock .itemsToSend {
+            flex-direction: column; } }
+        .content .form .formContent .formBlock .itemsToSend .element {
+          width: 33.333%;
+          padding-left: 25px;
+          text-align: center; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .itemsToSend .element {
+              width: 100%;
+              padding: 0; } }
+          .content .form .formContent .formBlock .itemsToSend .element:first-child {
+            padding-left: 0; }
+          .content .form .formContent .formBlock .itemsToSend .element .imageBlock .img {
+            display: block;
+            width: 50%;
+            margin: auto; }
+          .content .form .formContent .formBlock .itemsToSend .element .textBlock .headerText {
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 24px;
+            font-weight: 500;
+            margin: 20px 0 10px; }
+          .content .form .formContent .formBlock .itemsToSend .element .textBlock .desc {
+            text-align: center;
+            font-size: 13px; }
+          .content .form .formContent .formBlock .itemsToSend .element .boxSelect {
+            width: 15%;
+            margin: 10px auto 20px;
+            padding: 5px; }
+            @media (max-width: 768px) {
+              .content .form .formContent .formBlock .itemsToSend .element .boxSelect {
+                width: 45px; } }
+      .content .form .formContent .formBlock .addresses {
+        display: flex;
+        border: 1px solid #c5c5c5; }
+        @media (max-width: 768px) {
+          .content .form .formContent .formBlock .addresses {
+            flex-direction: column; } }
+        .content .form .formContent .formBlock .addresses .address {
+          width: 50%; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .addresses .address {
+              width: 100% !important; } }
+          .content .form .formContent .formBlock .addresses .address .addressHeader {
+            text-transform: capitalize;
+            height: 49px;
+            line-height: 49px;
+            padding: 0 0 0 20px;
+            margin: 0;
+            color: #656565;
+            font-size: 18px;
+            font-weight: normal;
+            background: #f5f5f5; }
+          .content .form .formContent .formBlock .addresses .address .boxDivider {
+            width: 100%;
+            height: 1px;
+            background-color: #aaa; }
+          .content .form .formContent .formBlock .addresses .address .addressContent {
+            padding: 20px; }
+            .content .form .formContent .formBlock .addresses .address .addressContent .addressElement {
+              padding-top: 20px; }
+              .content .form .formContent .formBlock .addresses .address .addressContent .addressElement:first-child {
+                padding-top: 0; }
+              .content .form .formContent .formBlock .addresses .address .addressContent .addressElement .addressLine {
+                display: flex;
+                justify-content: space-between;
+                align-items: center; }
+                .content .form .formContent .formBlock .addresses .address .addressContent .addressElement .addressLine .addressLabel {
+                  text-transform: capitalize;
+                  line-height: 38px;
+                  font-size: 15px;
+                  color: #888;
+                  font-weight: bold; }
+                .content .form .formContent .formBlock .addresses .address .addressContent .addressElement .addressLine .addressField {
+                  width: 73%; }
+                  .content .form .formContent .formBlock .addresses .address .addressContent .addressElement .addressLine .addressField .addressLineInput {
+                    width: 100%;
+                    border: 1px solid #aaa;
+                    color: #333;
+                    box-sizing: border-box;
+                    font-size: 16px;
+                    font-weight: bold;
+                    padding: 10px;
+                    background: transparent; }
+                  .content .form .formContent .formBlock .addresses .address .addressContent .addressElement .addressLine .addressField .errInput {
+                    border: 1px solid #f00; }
+              .content .form .formContent .formBlock .addresses .address .addressContent .addressElement .textWrap {
+                display: flex;
+                justify-content: flex-end;
+                line-height: 12px;
+                font-size: 11px;
+                padding-top: 4px; }
+                .content .form .formContent .formBlock .addresses .address .addressContent .addressElement .textWrap .phoneText {
+                  width: 320px;
+                  color: #111; }
+              .content .form .formContent .formBlock .addresses .address .addressContent .addressElement .addressFieldError {
+                display: none;
+                width: 320px;
+                color: #f00; }
+        .content .form .formContent .formBlock .addresses .collectionAddress {
+          border-right: 1px solid #c5c5c5; }
+        .content .form .formContent .formBlock .addresses .thirdAddress {
+          display: none;
+          border-right: 1px solid #c5c5c5; }
+        .content .form .formContent .formBlock .addresses .triple {
+          width: 33.333%;
+          box-sizing: border-box; }
+          .content .form .formContent .formBlock .addresses .triple .addressContent .addressElement .addressLine {
+            flex-direction: column;
+            align-items: flex-start; }
+            .content .form .formContent .formBlock .addresses .triple .addressContent .addressElement .addressLine .addressField {
+              width: 100%; }
+      .content .form .formContent .formBlock .pickUpDates .dateSection {
+        border: 1px solid #c5c5c5;
+        background: #f5f5f5;
+        width: 958px;
+        height: 435px;
+        margin-top: 5px; }
+        @media (max-width: 768px) {
+          .content .form .formContent .formBlock .pickUpDates .dateSection {
+            box-sizing: border-box;
+            width: 100%;
+            height: auto; } }
+        .content .form .formContent .formBlock .pickUpDates .dateSection h2 {
+          height: 49px;
+          line-height: 49px;
+          padding: 0 0 0 20px;
+          margin: 0;
+          color: #656565;
+          font-size: 18px;
+          font-weight: normal;
+          background: #f5f5f5;
+          border-bottom: 1px solid #c5c5c5; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .pickUpDates .dateSection h2 {
+              height: auto;
+              line-height: normal;
+              padding: 10px; } }
+        .content .form .formContent .formBlock .pickUpDates .dateSection .wrap {
+          display: flex; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .pickUpDates .dateSection .wrap {
+              flex-direction: column; } }
+        .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox {
+          position: relative;
+          width: 382px;
+          height: 386px;
+          border-right: 1px solid #c5c5c5; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox {
+              width: 100%;
+              height: auto; } }
+          .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker {
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+            margin: 28px auto;
+            width: 320px;
+            height: 330px;
+            background: #2980b9;
+            border-radius: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center; }
+            @media (max-width: 768px) {
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker {
+                width: 100%;
+                height: auto;
+                margin: 0; } }
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-switch {
+              position: relative;
+              line-height: 55px;
+              text-align: center;
+              font-size: 24px !important;
+              color: #fff; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-switch:hover {
+                background-color: #73acd1; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-switch:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 320px;
+                height: 1px;
+                background-color: #fff; }
+                @media (max-width: 768px) {
+                  .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-switch:before {
+                    width: 100%; } }
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .next,
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .prev {
+              position: relative;
+              font-size: 30px !important; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .next:hover,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .prev:hover {
+                background-color: #73acd1; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .next:before,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .prev:before {
+                content: "";
+                position: absolute;
+                top: -7px;
+                width: 1px;
+                height: 61px;
+                background-color: #fff; }
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .prev:before {
+              right: 0; }
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .next:before {
+              left: -1px; }
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline {
+              display: flex;
+              align-items: center;
+              height: 100%;
+              width: 320px;
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box; }
+              @media (max-width: 768px) {
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline {
+                  width: 100%; } }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .datepicker-days,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .table-condensed {
+                height: 100%;
+                width: 100%;
+                overflow: hidden; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .table-condensed {
+                border-collapse: separate !important; }
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .table-condensed td,
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .table-condensed th {
+                  padding: 0 !important; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline tr th {
+                font-size: 18px;
+                height: 30px; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .dow {
+                font-weight: lighter;
+                font-size: 14px; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .day {
+                box-sizing: border-box;
+                color: #fff;
+                border: 2px solid #2980b9;
+                border-radius: 0;
+                background-color: #2980b9; }
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .day:hover {
+                  border: 2px solid #fff;
+                  background-color: transparent; }
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .day.active {
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  color: #2980b9;
+                  background-color: #fff !important;
+                  background-image: linear-gradient(#fff, #fff); }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .disabled.day {
+                color: #73acd1; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .new,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline .old {
+                color: #73acd1; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline thead {
+                color: #fff; }
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline thead tr:first-child {
+                  display: none; }
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateCalendarBox > .myDatepicker .datepicker-inline thead:hover {
+                  background-color: #2980b9; }
+        .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox {
+          width: 575px;
+          height: 387px; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox {
+              width: 100%;
+              height: auto; } }
+          .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect,
+          .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver {
+            background: #fff;
+            width: 575px;
+            height: 190px; }
+            @media (max-width: 768px) {
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver {
+                width: 100%;
+                height: auto; } }
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .wrapDate,
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .wrapDate {
+              display: flex;
+              justify-content: space-between; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .wrapDate .dateInfoTopData,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .wrapDate .dateInfoTopData {
+                margin: 4px 0 0;
+                float: right; }
+                @media (max-width: 768px) {
+                  .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .wrapDate .dateInfoTopData,
+                  .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .wrapDate .dateInfoTopData {
+                    display: flex;
+                    align-items: center; } }
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .wrapDate .dateInfoTopData .choosenDate,
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .wrapDate .dateInfoTopData .choosenDate {
+                  font-weight: bold;
+                  font-size: 24px;
+                  color: #2980b9; }
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .wrapDate .dateInfoTopData .dataWarning,
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .wrapDate .dateInfoTopData .dataWarning {
+                  display: none;
+                  font-size: 11px;
+                  color: #f00; }
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .pd20,
+            .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .pd20 {
+              padding: 20px;
+              position: relative; }
+              @media (max-width: 768px) {
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .pd20,
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .pd20 {
+                  padding: 20px 5px; } }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .pd20 .dateInfoTopTitle,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .pd20 .dateInfoTopTitle {
+                margin: 4px 0 0;
+                color: #555;
+                font-weight: bold; }
+                @media (max-width: 768px) {
+                  .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .pd20 .dateInfoTopTitle,
+                  .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .pd20 .dateInfoTopTitle {
+                    display: flex;
+                    align-items: center; } }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .pd20 .dateInfoExpandedInfo,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .pd20 .dateInfoExpandedInfo {
+                margin: 10px 0 0;
+                color: #999;
+                font-weight: bold; }
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .pd20 .dateInfoExpandedInfo > div,
+                .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .pd20 .dateInfoExpandedInfo > div {
+                  line-height: 26px; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .pd20 .alertText,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .pd20 .alertText {
+                font-size: 12px;
+                font-weight: normal;
+                margin-top: 10px; }
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect .pd20 .helpIcon,
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsDeliver .pd20 .helpIcon {
+                position: relative;
+                top: 5px;
+                display: inline-table;
+                width: 22px;
+                height: 22px;
+                background: url("../img/helpIcon.png");
+                cursor: pointer; }
+          .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect {
+            height: 194px;
+            border-bottom: 1px solid #c5c5c5; }
+            @media (max-width: 768px) {
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .dateDetailsCollect {
+                height: auto; } }
+          .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .osr {
+            height: 385px; }
+            @media (max-width: 768px) {
+              .content .form .formContent .formBlock .pickUpDates .dateSection .dateDetailsBox .osr {
+                height: auto; } }
+      .content .form .formContent .formBlock .pickUpDates .pageOptions-2 {
+        background: #515151;
+        color: #fff !important;
+        margin: 20px 0 0;
+        position: relative;
+        width: 100%;
+        height: 64px;
+        padding: 8px 0 0; }
+        @media (max-width: 768px) {
+          .content .form .formContent .formBlock .pickUpDates .pageOptions-2 {
+            height: auto; } }
+        .content .form .formContent .formBlock .pickUpDates .pageOptions-2 p {
+          line-height: 24px;
+          text-align: center;
+          margin-bottom: 0 !important; }
+      .content .form .formContent .formBlock .confirm .grayBlock {
+        background: #f5f5f5;
+        border: 1px solid #c5c5c5;
+        overflow: hidden;
+        color: #818181; }
+        .content .form .formContent .formBlock .confirm .grayBlock .wrapSummary {
+          padding: 20px;
+          border-bottom: 1px solid #c5c5c5; }
+          .content .form .formContent .formBlock .confirm .grayBlock .wrapSummary .summary {
+            font-size: 16px;
+            font-weight: bold;
+            color: #818181; }
+        .content .form .formContent .formBlock .confirm .grayBlock .wrapBot {
+          display: flex; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .confirm .grayBlock .wrapBot {
+              flex-direction: column; } }
+          .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .leftPart {
+            width: 40%;
+            box-sizing: border-box;
+            padding: 20px;
+            border-right: 1px solid #c5c5c5; }
+            @media (max-width: 768px) {
+              .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .leftPart {
+                width: 100%; } }
+            .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .leftPart ul {
+              list-style: none; }
+              .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .leftPart ul li {
+                display: flex;
+                margin: 0 0 6px;
+                font-size: 14px; }
+                .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .leftPart ul li span {
+                  height: 16px;
+                  font-weight: bold;
+                  padding-right: 10px;
+                  min-width: 95px; }
+            .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .leftPart .lastList {
+              margin-top: 30px; }
+          .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .rightPart {
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+            padding: 20px;
+            box-sizing: border-box; }
+            @media (max-width: 768px) {
+              .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .rightPart {
+                flex-direction: column;
+                width: 100%; } }
+            .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .rightPart .mainWrap {
+              width: 50%; }
+              @media (max-width: 768px) {
+                .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .rightPart .mainWrap {
+                  width: 100%; } }
+              .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .rightPart .mainWrap .divider {
+                height: 1px;
+                width: 65%;
+                background-color: #c5c5c5;
+                margin: 15px 0; }
+              .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .rightPart .mainWrap .wrapBlock .title {
+                padding: 0 0 30px;
+                font-size: 15px;
+                font-weight: bold; }
+              .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .rightPart .mainWrap .wrapBlock .name {
+                padding-top: 20px;
+                margin: 0 0 6px;
+                font-size: 14px;
+                font-weight: bold; }
+              .content .form .formContent .formBlock .confirm .grayBlock .wrapBot .rightPart .mainWrap .wrapBlock .bold {
+                font-weight: bold; }
+      .content .form .formContent .formBlock .confirm .smyPanel {
+        color: #818181; }
+        .content .form .formContent .formBlock .confirm .smyPanel .smyAuthPanel {
+          margin: 20px 0 0;
+          width: 100%;
+          overflow: hidden; }
+          .content .form .formContent .formBlock .confirm .smyPanel .smyAuthPanel .btn-final {
+            width: 340px;
+            margin: 20px auto;
+            padding: 20px;
+            box-sizing: border-box; }
+            @media (max-width: 768px) {
+              .content .form .formContent .formBlock .confirm .smyPanel .smyAuthPanel .btn-final {
+                width: 100%; } }
+            .content .form .formContent .formBlock .confirm .smyPanel .smyAuthPanel .btn-final .smyBtn {
+              border: none;
+              background: #FFB911;
+              border-bottom: 2px solid #c7861e;
+              font-size: 16px;
+              font-weight: bold;
+              text-align: center;
+              color: #FFF;
+              display: block;
+              width: 280px;
+              height: 38px;
+              line-height: 32px;
+              margin: 0 auto;
+              cursor: pointer;
+              box-sizing: border-box;
+              transition: background 0.2s; }
+              @media (max-width: 768px) {
+                .content .form .formContent .formBlock .confirm .smyPanel .smyAuthPanel .btn-final .smyBtn {
+                  width: 100%; } }
+              .content .form .formContent .formBlock .confirm .smyPanel .smyAuthPanel .btn-final .smyBtn:hover {
+                background: #c7861e; }
+            .content .form .formContent .formBlock .confirm .smyPanel .smyAuthPanel .btn-final img {
+              padding: 20px 0 16px;
+              margin: 0 auto;
+              display: block;
+              width: 280px; }
+              @media (max-width: 768px) {
+                .content .form .formContent .formBlock .confirm .smyPanel .smyAuthPanel .btn-final img {
+                  width: 100%; } }
+        .content .form .formContent .formBlock .confirm .smyPanel .pageOptions {
+          position: relative;
+          width: 960px;
+          color: #5a7c94; }
+          .content .form .formContent .formBlock .confirm .smyPanel .pageOptions h2 {
+            text-align: center;
+            font-size: 20px;
+            border: 1px solid #c5c5c5;
+            background: #f5f5f5;
+            color: #717171;
+            padding: 20px 0;
+            margin: 0 105px 12px; }
+          .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow {
+            flex: 1;
+            margin: 0 105px 12px 0;
+            height: 110px;
+            overflow: hidden;
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: row; }
+            .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow:last-child {
+              margin: 0 105px 0 0; }
+            .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow .popular {
+              width: 120px;
+              padding: 22px 0;
+              display: flex;
+              display: -webkit-flex;
+              justify-content: center;
+              flex-direction: column;
+              text-align: center; }
+              .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow .popular.active {
+                font-size: 13px;
+                font-weight: bold;
+                background: #7FB835;
+                color: #fff; }
+            .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow button {
+              display: flex;
+              align-items: center;
+              border: 1px solid #c5c5c5;
+              background: #f5f5f5;
+              width: 100%;
+              padding: 22px 12px;
+              overflow: hidden;
+              box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              cursor: pointer;
+              transition: all 200ms;
+              -webkit-transition: all 200ms; }
+              .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow button.selected {
+                background: #2980b9;
+                border-color: #2980b9;
+                border-left-color: #2980b9; }
+                .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow button.selected .desc,
+                .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow button.selected .price,
+                .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow button.selected .title {
+                  color: #fff; }
+              .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow button .title {
+                width: 150px;
+                color: #717171;
+                font-size: 24px;
+                text-align: left;
+                border-right: 2px solid #e5e5e5;
+                line-height: 69px; }
+              .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow button .desc {
+                width: 450px;
+                color: #717171;
+                font-size: 16px;
+                text-align: left;
+                padding: 0 12px; }
+              .content .form .formContent .formBlock .confirm .smyPanel .pageOptions .flexiRow button .price {
+                width: 90px;
+                color: #717171;
+                font-size: 24px;
+                text-align: center;
+                border-left: 2px solid #e5e5e5;
+                line-height: 69px; }
+        .content .form .formContent .formBlock .confirm .smyPanel .authTotalRow {
+          margin-top: 32px;
+          margin-right: auto;
+          margin-left: auto;
+          width: 960px;
+          height: 64px;
+          background: #3fb09d;
+          color: #fff;
+          font-weight: bold; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .confirm .smyPanel .authTotalRow {
+              width: 100%;
+              height: auto; } }
+          .content .form .formContent .formBlock .confirm .smyPanel .authTotalRow .pd20 {
+            display: flex;
+            padding: 20px;
+            position: relative; }
+          .content .form .formContent .formBlock .confirm .smyPanel .authTotalRow .authTotalRowL {
+            width: 50%;
+            font-size: 20px; }
+          .content .form .formContent .formBlock .confirm .smyPanel .authTotalRow .authTotalRowR {
+            width: 50%;
+            font-size: 20px;
+            text-align: right; }
+        .content .form .formContent .formBlock .confirm .smyPanel .authTermsRow {
+          margin-top: 22px;
+          margin-bottom: 7px;
+          margin-right: auto;
+          margin-left: auto;
+          width: 958px;
+          height: 58px;
+          border: 1px solid #c5c5c5;
+          background: #f5f5f5;
+          color: #888;
+          font-weight: bold;
+          font-size: 16px; }
+          @media (max-width: 768px) {
+            .content .form .formContent .formBlock .confirm .smyPanel .authTermsRow {
+              width: 100%;
+              height: auto; } }
+          .content .form .formContent .formBlock .confirm .smyPanel .authTermsRow .pd20 {
+            padding: 20px;
+            position: relative; }
+          .content .form .formContent .formBlock .confirm .smyPanel .authTermsRow .termsStatement {
+            text-align: center;
+            line-height: 20px; }
+            .content .form .formContent .formBlock .confirm .smyPanel .authTermsRow .termsStatement a {
+              color: #7ab4e2;
+              text-decoration: underline; }
+              .content .form .formContent .formBlock .confirm .smyPanel .authTermsRow .termsStatement a:hover {
+                color: #2980b9;
+                text-decoration: none; }
+    .content .form .formContent .active {
+      display: block; }
+  .content .form .btns {
+    display: none;
+    justify-content: space-between;
+    padding: 15px 0; }
+    @media (max-width: 768px) {
+      .content .form .btns {
+        justify-content: flex-end; } }
+    .content .form .btns .prev {
+      background-color: #CDCDCD;
+      outline-color: #CDCDCD; }
+      .content .form .btns .prev:hover {
+        background-color: #999;
+        outline-color: #999; }
+      @media (max-width: 768px) {
+        .content .form .btns .prev {
+          display: none !important; } }
+    .content .form .btns .next {
+      background-color: #3fb09d;
+      outline-color: #2980B9; }
+    .content .form .btns .angle {
+      font-size: 40px;
+      font-weight: bold; }
+  .content .form .flexBtns {
+    display: flex; }
+  .content .form .showPrevBtn {
+    justify-content: space-between; }
+    .content .form .showPrevBtn .prev {
+      display: flex !important; }
+
+/*# sourceMappingURL=style.css.map */

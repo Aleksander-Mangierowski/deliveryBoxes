@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>delivery</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker3.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="dark-layer"></div>
+
+	<!-- text for different popups -->
+	<input type="hidden" class="compensationPopupText" data-value="'.$compensation_popup_text.'">
+	<input type="hidden" class="osrBlockPopup" data-value="'.$osr_block_popup.'">
+	<input type="hidden" class="collectionBlockPopup" data-value="'.$collection_block_popup.'">
+	<input type="hidden" class="deliveryBlockPopup" data-value="'.$delivery_block_popup.'">
+
+	<div class="popup">
+        <div class="popupHeader">
+            <div class="text">Help</div>
+            <div class="close"></div>
+        </div>
+        <div class="popupContent">
+            Items will be collected between 9.00 and 18.00. If you are not available you can leave your item with a friend at the collection address.
+        </div>
+    </div>
+	
+	<input type="hidden" class="username" value="Ivan">
+
+	<div class="content">
+		<div class="paginator container">
+			<div class="sections">
+				<div class="section ordinarySection currentNumber currentDesc"></div>
+				<div class="section ordinarySection"></div>
+				<div class="section ordinarySection"></div>
+				<div class="section ordinarySection"></div>
+				<div class="section activeSection"></div>
+				<div class="progressMask"></div>
+			</div>
+			<div class="blockTotal">
+				Total: &#xa3;
+				<span class="cost-field">
+					0.00
+				</span></div>			
+		</div>
+
+		<div class="progressAdapt container">
+			<div class="progressAdaptSections">
+				<div class="adaptSection"></div>
+				<div class="adaptSection"></div>
+				<div class="adaptSection"></div>
+			</div>
+			<div class="progressAdaptNumbers">
+				<div class="adaptNumber ready active"></div>
+				<div class="adaptNumber"></div>
+				<div class="adaptNumber"></div>
+				<div class="adaptNumber"></div>
+			</div>
+		</div>
+
+		<div class="checkbox container">
+			<label for="checkboxAddress" class="checkLabel">show third section</label>
+			<input type="checkbox" class="checkboxOSR" id="checkboxAddress">
+		</div>
+
+		<form action="" class="form container">
+			<div class="formContent">
+				<div class="formBlock">
+					<div class="itemsToSend">
+						<div class="element">
+							<div class="imageBlock"><img src="./img/1.png" alt="imageBlock" class="img"></div>
+							<div class="textBlock">
+								<h2 class="headerText">our spare room box</h2>
+								<div class="desc">Provided for FREE!
+									51x41x31cm (20"x16"x12") 
+									Max weight 15kg
+									No Handling Charge
+								</div>
+							</div>
+							<select name="select1" id="" class="boxSelect is_osr">
+								<option value="0" data-price="0">0</option>
+								<option value="1" data-price="10">1</option>
+								<option value="2" data-price="20">2</option>
+							</select>
+						</div>
+						<div class="element">
+							<div class="imageBlock"><img src="./img/2.png" alt="imageBlock" class="img"></div>
+							<div class="textBlock">
+								<h2 class="headerText">your box</h2>
+								<div class="desc">
+									Any box supplied by the customer
+									smaller than 51x51x51cm (20'x20'x20')
+									Max weight 15kg
+									No Handling Charge
+								</div>
+							</div>							
+							<select name="select2" id="" class="boxSelect">
+								<option value="0" data-price="0">0</option>
+								<option value="1" data-price="10">1</option>
+								<option value="2" data-price="20">2</option>
+							</select>							
+						</div>
+						<div class="element">
+							<div class="imageBlock"><img src="./img/3.png" alt="imageBlock" class="img"></div>
+							<div class="textBlock">
+								<h2 class="headerText">suitcase</h2>
+								<div class="desc">
+									Any normal suitcase or bag
+									90x75x43cm (35"x30"x16")
+									Max weight 20kg
+									£ 5.00 Handling Charge
+								</div>
+							</div>
+							<select name="select3" id="" class="boxSelect">
+								<option value="0" data-price="0">0</option>
+								<option value="1" data-price="10">1</option>
+								<option value="2" data-price="20">2</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="insurance">
+						<div class="textInsurance">
+							Please select the amount of compensation cover you require:
+						</div>
+						<div class="helpIcon compensationHelp"></div>
+						<select name="insuranceSelect" id="insuranceSelect" class="insuranceSelect">
+							<option value="insurance1" data-price="2.5">insurance text1</option>
+							<option value="insurance2" data-price="5.5">insurance text2</option>
+						</select>
+					</div>
+
+					<div class="totalPrice container">
+						<div class="totalTitle">Total to pay:</div>
+						<div class="totalValue">
+							<span>&#xa3;</span>
+							<span class="cost-field">0.00</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="formBlock">
+					<div class="addresses">
+						<div class="address thirdAddress">
+							<h1 class="addressHeader">third address</h1>
+							<div class="boxDivider"></div>
+							<div class="addressContent">
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">full name</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="name"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your name (minimim 2 characters)</div>
+									</div>
+								</div>
+								
+								<div class="addressElement wide">
+									<div class="addressLine">
+										<label for="" class="addressLabel">phone</label>										
+										<div class="addressField"><input type="text" class="addressLineInput" name="phone"></div>
+									</div>
+									<div class="textWrap">
+										<div class="phoneText">
+											Unfortunately drivers are unable to phone in advance or when they arrive at the collection address. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+											tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+											quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+											consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+											cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+											proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+										</div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter a phone number (minimim 6 characters)</div>
+									</div>										
+								</div>
+
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">postcode</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="postcode"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter a postcode (minimim 4 characters)</div>
+									</div>
+								</div>
+								
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">address line</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="address"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your address (minimim 2 characters)</div>
+									</div>
+								</div>
+
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">town</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="town"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your town or state (minimim 2 characters)</div>
+									</div>	
+								</div>
+								
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">county</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="county"></div>
+									</div>
+								</div>								
+							</div>
+						</div>
+
+						<div class="address collectionAddress">
+							<h1 class="addressHeader">collection address</h1>
+							<div class="boxDivider"></div>
+							<div class="addressContent">
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">full name</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="name"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your name (minimim 2 characters)</div>
+									</div>
+								</div>
+								
+								<div class="addressElement wide">
+									<div class="addressLine">
+										<label for="" class="addressLabel">phone</label>										
+										<div class="addressField"><input type="text" class="addressLineInput" name="phone"></div>
+									</div>
+									<div class="textWrap">
+										<div class="phoneText">
+											Unfortunately drivers are unable to phone in advance or when they arrive at the collection address.
+										</div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter a phone number (minimim 6 characters)</div>
+									</div>										
+								</div>
+
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">postcode</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="postcode"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter a postcode (minimim 4 characters)</div>
+									</div>
+								</div>
+								
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">address line</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="address"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your address (minimim 2 characters)</div>
+									</div>
+								</div>
+
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">town</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="town"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your town or state (minimim 2 characters)</div>
+									</div>	
+								</div>
+								
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">county</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="county"></div>
+									</div>
+								</div>								
+							</div>
+						</div>
+
+						<div class="address deliveryAddress">
+							<h1 class="addressHeader">delivery address</h1>
+							<div class="boxDivider"></div>
+							<div class="addressContent">
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">full name</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="name"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your name (minimim 2 characters)</div>
+									</div>
+								</div>
+								
+								<div class="addressElement wide">
+									<div class="addressLine">
+										<label for="" class="addressLabel">phone</label>										
+										<div class="addressField"><input type="text" class="addressLineInput" name="phone"></div>
+									</div>
+									<div class="textWrap">
+										<div class="phoneText"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter a phone number (minimim 6 characters)</div>
+									</div>										
+								</div>
+
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">postcode</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="postcode"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter a postcode (minimim 4 characters)</div>
+									</div>
+								</div>
+								
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">address line</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="address"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your address (minimim 2 characters)</div>
+									</div>
+								</div>
+
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">town</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="town"></div>
+									</div>
+									<div class="textWrap">
+										<div class="addressFieldError">Please enter your town or state (minimim 2 characters)</div>
+									</div>	
+								</div>
+								
+								<div class="addressElement">
+									<div class="addressLine">
+										<label for="" class="addressLabel">county</label>
+										<div class="addressField"><input type="text" class="addressLineInput" name="county"></div>
+									</div>
+								</div>								
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="formBlock">
+					<div class="pickUpDates">
+						<div class="dateSection">
+							<h2>
+								OSR - Please select a collection date
+							</h2>
+							<div class="wrap">
+								<div class="dateCalendarBox">
+									<!-- <input type="hidden" id="disabled_days" value="['28-08-2017']"> -->
+									<input type="hidden" id="disabled_days" value="'.$exclude_dates.'">
+									<div class="myDatepicker" id="dp1" data-date-days-of-week-disabled="'.$days_of_week.'"></div>
+								</div>
+								<div class="dateDetailsBox">
+									<div class="dateDetailsCollect osr">
+										<div class="pd20">
+											<div class="wrapDate">
+												<div class="dateInfoTopTitle">
+													Collection Date:
+												</div>
+												<div class="dateInfoTopData">
+													<div class="choosenDate"></div>
+													<!-- Wed 30th Aug -->
+													<div class="dataWarning">
+														You have to choose the date
+													</div>
+												</div>
+											</div>
+											<div class="dateInfoExpandedInfo">
+												<div>
+													Expected Collection Time
+												</div>
+												<div class="time">
+													9:00 - 18:00
+													<div class="helpIcon osrHelp"></div>
+												</div>
+											</div>
+										</div>
+									</div>									
+								</div>
+							</div>
+						</div>
+
+						<div class="dateSection">
+							<h2>
+								Please select a collection date
+							</h2>
+							<div class="wrap">
+								<div class="dateCalendarBox">
+									<div class="myDatepicker" id="dp2" data-date-days-of-week-disabled="'.$days_of_week.'"></div>
+								</div>
+								<div class="dateDetailsBox">
+									<div class="dateDetailsCollect">
+										<div class="pd20">
+											<div class="wrapDate">
+												<div class="dateInfoTopTitle">
+													Collection Date:
+												</div>
+												<div class="dateInfoTopData">
+													<div class="choosenDate"></div>
+													<!-- Wed 30th Aug -->
+													<div class="dataWarning">
+														You have to choose the date
+													</div>
+												</div>
+											</div>
+											<div class="dateInfoExpandedInfo">
+												<div>
+													Expected Collection Time
+												</div>
+												<div class="time">
+													9:00 - 18:00
+													<div class="helpIcon collectionHelp"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="dateDetailsDeliver">
+										<div class="pd20">
+											<div class="wrapDate">
+												<div class="dateInfoTopTitle">
+													Expected Delivery Date:
+												</div>
+												<div class="dateInfoTopData">
+													<div class="choosenDate"></div>
+													<!-- Fri 1st Sep -->
+												</div>
+											</div>
+											<div class="dateInfoExpandedInfo">
+												<div>
+													Expected Delivery Time
+												</div>
+												<div class="time">
+													9:00 - 18:00
+													<div class="helpIcon deliveryHelp"></div>
+												</div>
+												<div class="alertText">
+													Due to the time of year and the number of items being sent, please allow an extra working day for delivery.
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="pageOptions-2">
+							<p>
+								Items sent to/from University Halls will be collected/delivered at the reception.
+							</p>
+							<p>
+								For houses and flats, the items will be delivered to your door. You receive 3 delivery attempts on shipments.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="formBlock">
+					<div class="confirm">
+						<div class="grayBlock">
+							<div class="wrapSummary">
+								<h2 class="summary">
+									Order Summary
+								</h2>
+							</div>
+							<div class="wrapBot">
+								<div class="leftPart">
+									<ul class="firstList">
+										<!-- <li>
+											<span>
+												Service:
+											</span> Express 48
+										</li>
+										<li>
+											<span>
+												Collection country:
+											</span> UK - Mainland
+										</li>
+										<li>
+											<span>
+												Delivery country:
+											</span> UK - Mainland
+										</li> -->
+										<li>
+											<span>
+												Items to send:
+											</span> 
+											<div class="totalItemsToSend">
+												no items added
+											</div>
+										</li>
+										<li>
+											<span>
+												Compensation cover:
+											</span>
+											<div class="compensationValue">
+												£100 Cover
+											</div> 
+										</li>
+										<!-- <li>
+											<span>
+												Fare:
+											</span> Super Flexi - £5
+										</li> -->
+									</ul>
+									<!-- <ul class="lastList">
+										<li>
+											<span>
+												Remote area charge:
+											</span> no charges
+										</li>
+										<li>
+											<span>
+												Over weight/size charge:
+											</span> no charges
+										</li>
+										<li>
+											<span>
+												Coupon discounts:
+											</span> no discounts
+										</li>
+									</ul> -->
+								</div>
+								<div class="rightPart">
+									<div class="mainWrap">
+										<div class="wrapBlock">
+											<div class="title">
+												OSR :
+											</div>
+											<div class="collectingData bold"><span class="collectionSpan"></span></div>
+											<div class="collectingData bold">Tel:<span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="name">
+												OSR on: <span class="dateSpan">no date set</span>
+											</div>
+											<div class="text">
+												Approx time: 9:00 - 18:00
+											</div>
+										</div>
+										
+										<div class="divider"></div>
+
+										<div class="wrapBlock">
+											<div class="title">
+												Collecting from:
+											</div>
+											<div class="collectingData bold"><span class="collectionSpan"></span></div>
+											<div class="collectingData bold">Tel:<span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="name">
+												Collecting on: <span class="dateSpan">no date set</span>
+											</div>
+											<div class="text">
+												Approx time: 9:00 - 18:00
+											</div>
+										</div>
+									</div>
+
+									<div class="mainWrap">
+										<div class="wrapBlock">
+											<div class="title">
+												Delivering to:
+											</div>
+											<div class="collectingData bold"><span class="collectionSpan"></span></div>
+											<div class="collectingData bold">Tel:<span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="collectingData"><span class="collectionSpan"></span></div>
+											<div class="name">
+												Delivering on: <span class="dateSpan">no date set</span>
+											</div>
+											<div class="text">
+												Approx time: 9:00 - 18:00
+											</div>
+										</div>
+									</div>								
+								</div>
+							</div>
+						</div>
+						<div class="smyPanel">
+							<div class="smyAuthPanel">
+								<div class="btn-final">
+									<button class="smyBtn" type="button">Login</button>
+									<img src="img/or.png" alt="img">
+									<button class="smyBtn" type="button">Register</button>
+								</div>
+							</div>
+							<!-- <div class="pageOptions">
+								<h2>
+									Please select a Fare
+								</h2>
+								<div class="flexiOptions">
+									<div class="flexiRow">
+										<div class="popular"></div>
+										<button type="button">
+											<div class="title">
+												Standart
+											</div>
+											<div class="desc">
+												Standard door-to-door service with online tracking.  No ability to edit booking once placed.
+											</div>
+											<div class="price">
+												£0
+											</div>
+										</button>
+									</div>
+									<div class="flexiRow">
+										<div class="popular active">
+											Most Popular
+										</div>
+										<button type="button">
+											<div class="title">
+												Flexi
+											</div>
+											<div class="desc">
+												Ability to <b>edit address</b> information and <b>collection date</b> up until 4pm before collection date.
+											</div>
+											<div class="price">
+												£3
+											</div>
+										</button>
+									</div>
+									<div class="flexiRow">
+										<div class="popular"></div>
+										<button type="button" class="selected">
+											<div class="title">
+												Super Flexi
+											</div>
+											<div class="desc">
+												Ability to <b>edit address</b> information and <b>collection date</b> up until 4pm before collection date <u>plus</u> <b>cancel booking for full refund</b> (minus £5) at any time for any reason.
+											</div>
+											<div class="price">
+												£5
+											</div>
+										</button>
+									</div>
+								</div>
+							</div> -->
+							<div class="authTotalRow">
+								<div class="pd20">
+									<div class="authTotalRowL">
+										Total to pay:
+									</div>
+									<div class="authTotalRowR">
+										&#xa3;
+										<span class="cost-field">
+											0.00
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="authTermsRow">
+								<div class="pd20">
+									<div class="termsStatement">
+										I agree to the
+										<a href="terms" target="_blank">terms and conditions</a> and agree not to send any items on the
+										<a href="prohibited-items" target="_blank">prohibited items</a> list&nbsp;&nbsp;&nbsp;&nbsp;
+										<input class="cbTerms" type="checkbox">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns">
+				<button type="button" class="btn prev">
+					<i class="fa fa-angle-left angle"></i>
+					<span class="btnText">Cancel</span>
+				</button>
+				<button type="button" class="btn next">
+					<span class="btnText">Next</span>
+					<i class="fa fa-angle-right angle"></i>
+				</button>				
+			</div>
+		</form>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>	
+</body>
+</html>

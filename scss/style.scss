@@ -1,0 +1,1271 @@
+$mainProgressColor: #cfcfcf;
+$readyProgressColor: rgba(219, 14, 126, 0.25);
+$activeProgressColor: #DB0E7E;
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: "rooney-sans",sans-serif;
+}
+
+.container {
+	box-sizing: border-box;
+	width: 960px;
+	// max-width: 960px;
+	margin: 0 auto;
+	
+	@media (max-width: 768px) {
+		width: 100%;
+		padding: 0 15px;
+	}
+}
+
+.btn {
+	display: flex!important;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: border-box;
+	width: 220px;
+	height: 50px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0 15px;
+	border: 0;	
+	
+	@media (max-width: 768px) {
+		width: 45%;
+	}
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.dark-layer {
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	z-index: -1;
+}
+
+// popup
+.popup {
+	position: fixed;
+	z-index: -1;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 560px;
+	font-size: 18px;
+	opacity: 0;
+
+	@media (max-width: 768px) {
+		width: 73%;
+		min-width: 300px;
+	}
+
+	.popupHeader {
+		position: relative;
+
+		.text {
+			height: 48px;
+			line-height: 48px;
+			padding: 0 20px;
+			background: #2980b9;
+			color: #fff;
+		}
+
+		.close {
+			position: absolute;
+			right: 13px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 23px;
+			height: 23px;
+			border: none;            
+			cursor: pointer;
+			background-image: url("../img/btnClose.png");
+
+			&:hover {
+				background-position: 0 -23px;
+			}
+		}
+	}
+
+	.popupContent {
+		color: #141d1e;
+		background-color: #fff;
+		padding: 20px;
+	}
+}
+
+.higherZIndex {
+	z-index: 1010;
+}
+
+%total {
+	display: flex;
+	align-items: center;
+	color: #fff;
+	background-color: #3fb09d;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0 15px;
+}
+
+.content {
+	.checkbox {
+		display: none;
+		padding-top: 15px;
+		.checkLabel {
+			cursor: pointer;
+			margin-right: 20px;
+		}
+		.checkboxOSR {
+			cursor: pointer;
+		}
+	}
+
+	.flexCheckbox {
+		display: flex;
+		align-items: center;
+	}
+
+	.paginator {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px 0 30px;
+		@media (max-width: 768px) {
+			display: none;
+		}
+		.sections {
+			position: relative;
+			display: flex;
+			background-color: $mainProgressColor;				
+
+			.ordinarySection {
+				position: relative;
+				background-color: $mainProgressColor;
+				
+				&:nth-child(1) {
+					&::before {
+						content: "1";
+					}
+
+					&::after {
+						content: "Items to send";
+					}
+				}
+
+				&:nth-child(2) {
+					&::before {
+						content: "2";
+					}
+
+					&::after {
+						content: "Addresses";
+					}
+				}
+
+				&:nth-child(3) {
+					&::before {
+						content: "3";
+					}
+
+					&::after {
+						content: "Pick up dates";
+					}
+				}
+
+				&:nth-child(4) {
+					&::before {
+						content: "4";
+					}
+
+					&::after {
+						content: "Confirm";
+					}
+				}
+			}
+
+			.section {	
+				position: relative;			
+				width: 184px;
+				height: 26px;
+				cursor: pointer;
+				
+				&::before {
+					position: absolute;
+					z-index: 10;
+					left: 50%;
+					transform: translateX(-50%);
+					width: 26px;
+					height: 26px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					font-size: 11px;
+					font-weight: 900;
+					color: $mainProgressColor;
+				}				
+
+				&::after {
+					pointer-events: none;
+					position: absolute;
+					top: 40px;
+					left: 50%;
+					transform: translateX(-50%);
+					font-size: 14px;
+					color: $mainProgressColor;
+					cursor: default;
+					transition: color 1.2s;
+				}
+			}
+
+			.currentNumber {
+				&::before {
+					color: #DB0E7E;
+					cursor: default;
+				}
+			}
+			
+			.currentDesc {
+				&::after {
+					color: #333;
+				}
+			}
+
+			.ready {
+				background-color: $readyProgressColor;
+			}
+
+			.activeSection {
+				position: absolute;
+				cursor: default;
+				background-color: $activeProgressColor;	
+			}
+			
+			.progressMask {
+				pointer-events: none;
+				position: absolute;
+				top: 0;
+				width: 736px;
+				height: 26px;
+				cursor: pointer;
+				background-image: url("../img/bookProgress.png");
+			}		
+		}
+
+		.blockTotal {
+			@extend %total;
+			justify-content: center;
+			width: 224px;
+			height: 50px;			
+		}
+	}
+
+	.progressAdapt {
+		position: relative;
+		display: none;
+		margin: 35px auto;		
+		@media (max-width: 768px) {
+			display: block;
+		}
+		.progressAdaptSections {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 26px;
+			.adaptSection {
+				width: 33%;
+				height: 6px;
+				background-color: $mainProgressColor;
+			}
+			.ready {
+				background-color: $readyProgressColor;
+			}
+		}
+		.progressAdaptNumbers {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: flex;	
+			justify-content: space-between;
+			box-sizing: border-box;
+			width: 100%;
+			padding: 0 15px;
+			.adaptNumber {
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				box-sizing: border-box;
+				width: 26px;
+				height: 26px;
+				color: $mainProgressColor;
+				background-color: #fff;
+				font-size: 14px;
+				border: 5px solid $mainProgressColor;
+				border-radius: 50%;
+				@for $i from 1 through 4 {
+					&:nth-child(#{$i}) {
+						&:after {
+							content: "#{$i}";
+						}	
+					}
+				}							
+			}
+			.ready {
+				color: $readyProgressColor;
+				border-color: $readyProgressColor;
+			}
+			.active {
+				color: $activeProgressColor;
+				border-color: $activeProgressColor;
+			}
+		}
+	}
+
+	.form {
+		margin-top: 30px;
+		.formContent {
+			transition: all 2s;
+
+			.formBlock {
+				display: none;
+				
+				.insurance {
+					display: flex;
+					justify-content: flex-end;
+					align-items: center;
+					background-color: #515151;
+					font-size: 16px;
+					padding: 10px;
+					
+					@media (max-width: 768px) {
+						flex-direction: column;
+					}
+					
+					.textInsurance {
+						color: #fff;
+						
+						@media (max-width: 768px) {
+							text-align: center;
+						}
+					}
+					
+					.helpIcon {
+						position: relative;
+						display: inline-table;
+						width: 22px;
+						height: 22px;
+						background: url("../img/helpIcon.png");
+						cursor: pointer;
+						margin: 10px 10px 10px 5px;
+					}
+
+					.insuranceSelect {
+						width: 280px;
+						color: #555;
+						font-size: 16px;						
+						// padding: 10px;
+					}
+				}
+				.totalPrice {					
+					@extend %total;	
+					display: none;
+					justify-content: space-between;
+					padding: 20px 15px;
+					margin-top: 15px;
+					@media (max-width: 768px) {						
+						display: flex;
+					}					
+				}
+				
+				.itemsToSend {
+					display: flex;
+					
+					@media (max-width: 768px) {
+						flex-direction: column;
+						// align-items: center;
+					}
+					
+					.element {
+						width: 33.333%;
+						padding-left: 25px;
+						text-align: center;
+						
+						@media (max-width: 768px) {
+							width: 100%;
+							padding: 0;
+						} 
+						
+						&:first-child {
+							padding-left: 0;
+						}
+						
+						.imageBlock {
+							.img {
+								display: block;
+								width: 50%;
+								margin: auto;
+							}
+						}
+
+						.textBlock {
+							.headerText {
+								text-align: center;
+								text-transform: capitalize;
+								font-size: 24px;
+								font-weight: 500;
+								margin: 20px 0 10px;
+							}
+
+							.desc {
+								text-align: center;
+								font-size: 13px;
+							}							
+						}
+						
+						.boxSelect {
+							width: 15%;
+							margin: 10px auto 20px;
+							padding: 5px;
+							
+							@media (max-width: 768px) {
+								width: 45px;
+							}
+						}
+					}
+				}
+
+				.addresses {
+					display: flex;
+					border: 1px solid #c5c5c5;
+					@media (max-width: 768px) {
+						flex-direction: column;
+					}
+					
+					.address {
+						width: 50%;
+						@media (max-width: 768px) {
+							width: 100%!important;
+						}
+						
+						.addressHeader {
+							text-transform: capitalize;
+							height: 49px;
+							line-height: 49px;
+							padding: 0 0 0 20px;
+							margin: 0;
+							color: #656565;
+							font-size: 18px;
+							font-weight: normal;
+							background: #f5f5f5;
+						}
+
+						.boxDivider {
+							width: 100%;
+							height: 1px;
+							background-color: #aaa;
+						}
+
+						.addressContent {
+							padding: 20px;
+							
+							.addressElement {
+								padding-top: 20px;
+								
+								&:first-child {
+									padding-top: 0;
+								}
+
+								.addressLine {
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+
+									.addressLabel {
+										text-transform: capitalize;
+										line-height: 38px;
+										font-size: 15px;
+										color: #888;
+										font-weight: bold;
+									}
+
+									.addressField {
+										width: 73%;
+										.addressLineInput {
+											width: 100%;
+											border: 1px solid #aaa;										
+											color: #333;
+											box-sizing: border-box;
+											font-size: 16px;
+											font-weight: bold;
+											padding: 10px;
+											background: transparent;
+										}
+
+										.errInput {
+											border: 1px solid #f00;	
+										}
+									}
+								}
+								
+								.textWrap {
+									display: flex;	
+									justify-content: flex-end;
+									line-height: 12px;
+									font-size: 11px;
+									padding-top: 4px;
+
+									.phoneText {
+										width: 320px;										
+										color: #111;																			
+									}
+								}								
+								
+
+								.addressFieldError {
+									display: none;
+									width: 320px;
+									color: #f00;
+								}	
+							}
+
+							.wide {
+								// margin-bottom: 30px;
+							}							
+						}
+					}
+
+					.collectionAddress {
+						border-right: 1px solid #c5c5c5;
+					}
+
+					.thirdAddress {
+						display: none;
+						border-right: 1px solid #c5c5c5;
+					}
+
+					.triple {
+						width: 33.333%;
+						box-sizing: border-box;
+						
+						.addressContent {
+							.addressElement {
+								.addressLine {
+									flex-direction: column;
+									align-items: flex-start;
+									.addressField {
+										width: 100%;	
+									}	
+								}			
+							}
+						}											
+					}
+				}
+
+				// block 3
+				.pickUpDates {
+					.dateSection {
+						border: 1px solid #c5c5c5;
+						background: #f5f5f5;
+						width: 958px;
+						height: 435px;
+						margin-top: 5px;
+						
+						// &:first-child {
+						// 	display: none;
+						// }
+						@media (max-width: 768px) {
+							box-sizing: border-box;
+							width: 100%;
+							height: auto;
+						}
+
+						h2 {
+							height: 49px;
+							line-height: 49px;
+							padding: 0 0 0 20px;
+							margin: 0;
+							color: #656565;
+							font-size: 18px;
+							font-weight: normal;
+							background: #f5f5f5;
+							border-bottom: 1px solid #c5c5c5;
+							@media (max-width: 768px) {
+								height: auto;
+								line-height: normal;
+								padding: 10px;
+							}
+						}
+
+						.wrap {
+							display: flex;
+							@media (max-width: 768px) {
+								flex-direction: column;
+							}
+						}
+
+						.dateCalendarBox {
+							position: relative;
+							width: 382px;
+							height: 386px;
+							border-right: 1px solid #c5c5c5;
+							@media (max-width: 768px) {
+								width: 100%;
+								height: auto;
+							}
+
+							& > .myDatepicker {
+								padding: 0;
+								box-sizing: border-box;
+								position: relative;
+								margin: 28px auto;
+								width: 320px;
+								height: 330px;
+								background: #2980b9;
+								border-radius: 0;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								@media (max-width: 768px) {
+									width: 100%;
+									height: auto;
+									margin: 0;
+								}
+
+								.datepicker-switch {
+									position: relative;
+									line-height: 55px;
+									text-align: center;
+									font-size: 24px!important;
+									color: #fff;
+
+									&:hover {
+										background-color: #73acd1;
+									}
+
+									&:before {
+										content: "";
+										position: absolute;
+										bottom: 0;
+										left: 50%;
+										transform: translateX(-50%);
+										width: 320px;
+										height: 1px;
+										background-color: #fff;
+										@media (max-width: 768px) {
+											width: 100%;
+										}
+									}
+								}
+
+								.next,
+								.prev {
+									position: relative;
+									font-size: 30px!important;
+
+									&:hover {
+										background-color: #73acd1;
+									}
+
+									&:before {
+										content: "";
+										position: absolute;
+										top: -7px;
+										width: 1px;
+										height: 61px;
+										background-color: #fff;
+									}
+								}
+
+								.prev {
+				                    // padding-right: 10px;
+				                    &:before {
+				                    	right: 0;
+				                    }
+				                }
+
+				                .next {
+				                    // padding-left: 10px;
+				                    &:before {
+				                    	left: -1px;
+				                    }
+				                }
+
+				                .datepicker-inline {
+				                	display: flex;
+				                	align-items: center;
+				                	height: 100%;
+				                	width: 320px;
+				                	margin: 0;
+				                	padding: 0;
+				                	box-sizing: border-box;
+				                	@media (max-width: 768px) {
+				                		width: 100%;
+				                	}
+
+				                	.datepicker-days,
+				                	.table-condensed {				                		
+				                		height: 100%;
+				                		width: 100%;
+				                		overflow: hidden;
+				                	}
+
+				                	.table-condensed {
+				                		border-collapse: separate!important;
+				                		td,
+				                		th {
+				                			padding: 0!important;
+				                		}
+				                	}
+
+				                	tr {
+				                		&:last-child {
+			                            // display: none;			                            
+			                        }
+
+			                        th {
+			                        	font-size: 18px;
+			                        	height: 30px;
+			                        }
+			                    }
+
+			                    .dow {
+			                    	font-weight: lighter;
+			                    	font-size: 14px;
+			                    }
+
+			                    .day {
+			                    	box-sizing: border-box;
+			                    	color: #fff;
+			                    	border: 2px solid #2980b9;
+			                    	border-radius: 0;
+			                    	background-color: #2980b9;
+
+			                    	&:hover {
+			                    		border: 2px solid #fff;
+			                    		background-color: transparent;
+			                    	}
+
+			                    	&.active {
+			                    		width: 100%;
+			                    		height: 100%;
+			                    		display: flex;
+			                    		justify-content: center;
+			                    		align-items: center;
+			                    		color: #2980b9;
+			                    		background-color: #fff!important;
+			                    		background-image: linear-gradient(#fff,#fff);
+			                    	}
+			                    }
+
+			                    .disabled.day {
+			                    	color: #73acd1;
+			                    }
+			                    
+			                    .new,
+			                    .old {
+			                    	color: #73acd1;
+			                    }
+
+			                    thead {
+			                    	color: #fff;
+
+			                    	tr {
+			                    		&:first-child {
+			                    			display: none;
+			                    		}
+			                    	}
+
+			                    	&:hover {
+			                    		background-color: #2980b9;
+			                    	}
+			                    }
+			                }
+			            }
+			        }			        		        
+
+			        .dateDetailsBox {
+			        	width: 575px;
+			        	height: 387px;
+			        	@media (max-width: 768px) {
+			        		width: 100%;
+			        		height: auto;
+			        	}
+
+			        	.dateDetailsCollect,
+			        	.dateDetailsDeliver {
+			        		background: #fff;
+			        		width: 575px;
+			        		height: 190px;
+			        		@media (max-width: 768px) {
+			        			width: 100%;
+			        			height: auto;
+			        		}
+
+			        		.wrapDate {
+			        			display: flex;
+			        			justify-content: space-between;
+
+			        			.dateInfoTopData {
+			        				margin: 4px 0 0;	        				
+			        				float: right;
+			        				@media (max-width: 768px) {
+			        					display: flex;
+			        					align-items: center;
+			        				}
+
+			        				.choosenDate {
+			        					font-weight: bold;
+			        					font-size: 24px;
+			        					color: #2980b9;
+			        				}	        				        				
+
+			        				.dataWarning {
+			        					display: none;
+			        					font-size: 11px;
+			        					color: #f00;
+			        				}
+			        			}
+			        		}
+
+			        		.pd20 {
+			                    padding: 20px; // overflow: hidden;
+			                    position: relative;
+			                    @media (max-width: 768px) {
+			                    	padding: 20px 5px;
+			                    }
+			                    
+			                    
+			                    .dateInfoTopTitle {
+			                    	margin: 4px 0 0;
+			                    	color: #555;
+			                        // float: left;
+			                        font-weight: bold;
+			                        @media (max-width: 768px) {
+			                        	display: flex;
+			                        	align-items: center;
+			                        }
+			                    }
+			                    
+			                    .dateInfoExpandedInfo {
+			                    	margin: 10px 0 0;
+			                    	color: #999;
+			                    	font-weight: bold;
+
+			                    	& > div {
+			                    		line-height: 26px;
+			                    	}
+			                    }
+	                    
+	                    .alertText {
+	                    	font-size: 12px;
+	                    	font-weight: normal;
+	                    	margin-top: 10px;
+	                    }
+	                    
+	                    .helpIcon {
+	                    	position: relative;
+	                    	top: 5px;
+	                    	display: inline-table;
+	                    	width: 22px;
+	                    	height: 22px;
+	                    	background: url("../img/helpIcon.png");
+	                    	cursor: pointer;
+	                    }
+	                }
+	            }
+	            
+	            .dateDetailsCollect {
+	            	height: 194px;
+	            	border-bottom: 1px solid #c5c5c5;
+	            	@media (max-width: 768px) {
+	            		height: auto;
+	            	}
+	            }
+
+	            .osr {
+	            	height: 385px;
+	            	@media (max-width: 768px) {
+	            		height: auto;
+	            	}
+	            }
+	        }
+	    }
+
+	    .pageOptions-2 {
+	    	background: #515151;
+	    	color: #fff!important;
+	    	margin: 20px 0 0;
+	    	position: relative;
+	    	width: 100%;
+	    	height: 64px;
+	    	padding: 8px 0 0;
+	    	@media (max-width: 768px) {
+	    		height: auto;
+	    	}
+
+	    	p {
+	    		line-height: 24px;
+	    		text-align: center;
+	    		margin-bottom: 0!important;
+	    	}
+	    }
+	}
+
+				// block 4
+				.confirm {
+					.grayBlock {
+						background: #f5f5f5;
+						border: 1px solid #c5c5c5;
+						overflow: hidden;
+						color: #818181;
+						.wrapSummary {
+							padding: 20px;
+							border-bottom: 1px solid #c5c5c5;
+							.summary {
+								font-size: 16px;
+								font-weight: bold;
+								color: #818181;
+							}
+						}
+						.wrapBot {
+							display: flex;
+							@media (max-width: 768px) {
+								flex-direction: column;
+							}
+							.leftPart {
+								width: 40%;
+								box-sizing: border-box;
+								padding: 20px;
+								border-right: 1px solid #c5c5c5;
+								@media (max-width: 768px) {
+									width: 100%;
+								}
+								ul {
+									list-style: none;
+									li {
+										display: flex;
+										margin: 0 0 6px;
+										font-size: 14px;
+										span {
+											height: 16px;
+											font-weight: bold;
+											padding-right: 10px;
+											min-width: 95px;
+										}
+									}
+								}
+								.lastList {
+									margin-top: 30px;
+								}
+							}
+							.rightPart {
+								display: flex;
+								justify-content: space-between;
+								width: 60%;
+								padding: 20px;
+								box-sizing: border-box;
+								@media (max-width: 768px) {
+									flex-direction: column;	
+									width: 100%;
+								}
+								
+								.mainWrap {
+									width: 50%;
+									@media (max-width: 768px) {
+										width: 100%;
+									}
+									
+									.divider {
+										height: 1px;
+										width: 65%;
+										background-color: #c5c5c5;
+										margin: 15px 0;
+									}
+
+									.wrapBlock {									
+										.title {
+											padding: 0 0 30px;
+											font-size: 15px;
+											font-weight: bold;
+										}
+										.name {
+											padding-top: 20px;
+											margin: 0 0 6px;
+											font-size: 14px;
+											font-weight: bold;
+										}
+
+										.bold {
+											font-weight: bold;
+										}
+									}	
+								}								
+							}
+						}
+					}
+					.smyPanel {
+						color: #818181;
+						.smyAuthPanel {
+							margin: 20px 0 0;
+							width: 100%;
+							overflow: hidden;
+							// @media (max-width: 768px) {
+							// 	margin: 0;
+							// }
+							.btn-final {
+								width: 340px;
+								margin: 20px auto;
+								padding: 20px;
+								box-sizing: border-box;
+								@media (max-width: 768px) {
+									width: 100%;
+								}
+								.smyBtn {
+									border: none;
+									background: #FFB911;
+									border-bottom: 2px solid #c7861e;
+									font-size: 16px;
+									font-weight: bold;
+									text-align: center;
+									color: #FFF;
+									display: block;
+									width: 280px;
+									height: 38px;
+									line-height: 32px;
+									margin: 0 auto;
+									cursor: pointer;
+									box-sizing: border-box;
+									transition: background 0.2s;
+									@media (max-width: 768px) {
+										width: 100%;
+									}
+									&:hover {
+										background: #c7861e;
+									}
+								}
+								img {
+									padding: 20px 0 16px;
+									margin: 0 auto;
+									display: block;
+									width: 280px;
+									@media (max-width: 768px) {
+										width: 100%;
+									}
+								}
+							}
+						}
+						.pageOptions {
+							position: relative;
+							width: 960px;
+							color: #5a7c94;
+							h2 {
+								text-align: center;
+								font-size: 20px;
+								border: 1px solid #c5c5c5;
+								background: #f5f5f5;
+								color: #717171;
+								padding: 20px 0;
+								margin: 0 105px 12px;
+							}
+							.flexiRow {
+								flex: 1;
+								margin: 0 105px 12px 0;
+								height: 110px;
+								overflow: hidden;
+								display: flex;
+								display: -webkit-flex;
+								flex-direction: row;
+								&:last-child {
+									margin: 0 105px 0 0;
+								}
+								.popular {
+									width: 120px;
+									padding: 22px 0;
+									display: flex;
+									display: -webkit-flex;
+									justify-content: center;
+									flex-direction: column;
+									text-align: center;
+									&.active {
+										font-size: 13px;
+										font-weight: bold;
+										background: #7FB835;
+										color: #fff;
+									}
+								}
+								button {
+									display: flex;
+									align-items: center;
+									border: 1px solid #c5c5c5;
+									background: #f5f5f5;
+									width: 100%;
+									padding: 22px 12px;
+									overflow: hidden;
+									box-sizing: border-box;
+									-webkit-box-sizing: border-box;
+									cursor: pointer;
+									transition: all 200ms;
+									-webkit-transition: all 200ms;
+									&.selected {
+										background: #2980b9;
+										border-color: #2980b9;
+										border-left-color: #2980b9;
+										.desc,
+										.price,
+										.title {
+											color: #fff;
+										}
+									}
+									.title {
+										width: 150px;
+										color: #717171;
+										font-size: 24px;
+										text-align: left;
+										border-right: 2px solid #e5e5e5;
+										line-height: 69px;
+									}
+									.desc {
+										width: 450px;
+										color: #717171;
+										font-size: 16px;
+										text-align: left;
+										padding: 0 12px;
+									}
+									.price {
+										width: 90px;
+										color: #717171;
+										font-size: 24px;
+										text-align: center;
+										border-left: 2px solid #e5e5e5;
+										line-height: 69px;
+									}
+								}
+							}
+						}
+						.authTotalRow {
+							margin-top: 32px;
+							margin-right: auto;
+							margin-left: auto;
+							width: 960px;
+							height: 64px;
+							background: #3fb09d;
+							color: #fff;
+							font-weight: bold;
+							@media (max-width: 768px) {
+								width: 100%;
+								height: auto;
+							}
+							.pd20 {
+								display: flex;
+				                padding: 20px; // overflow: hidden;
+				                position: relative;
+				            }
+				            .authTotalRowL {
+				            	width: 50%;
+				            	font-size: 20px;
+				            }
+				            .authTotalRowR {
+				            	width: 50%;
+				            	font-size: 20px;
+				            	text-align: right;
+				            }
+        }
+        .authTermsRow {
+        	margin-top: 22px;
+        	margin-bottom: 7px;
+        	margin-right: auto;
+        	margin-left: auto;
+        	width: 958px;
+        	height: 58px;
+        	border: 1px solid #c5c5c5;
+        	background: #f5f5f5;
+        	color: #888;
+        	font-weight: bold;
+        	font-size: 16px;
+        	@media (max-width: 768px) {
+        		width: 100%;
+        		height: auto;
+        	}
+        	.pd20 {
+                padding: 20px; // overflow: hidden;
+                position: relative;
+            }
+            .termsStatement {
+            	text-align: center;
+            	line-height: 20px;
+            	a {
+            		color: #7ab4e2;
+            		text-decoration: underline;
+            		&:hover {
+            			color: #2980b9;
+            			text-decoration: none;
+            		}
+            	}
+            }
+        }
+    }
+}
+}
+.active {
+	display: block;
+}
+}
+
+.btns {
+	display: none;
+	justify-content: space-between;
+	padding: 15px 0;
+	@media (max-width: 768px) {
+		justify-content: flex-end;
+	}
+	.prev {
+		background-color: #CDCDCD;
+		outline-color: #CDCDCD;
+
+		&:hover {
+			background-color: #999;
+			outline-color: #999;
+		}
+		@media (max-width: 768px) {
+			display: none!important;
+		}
+	}
+
+	.next {
+		background-color: #3fb09d;
+		outline-color: #2980B9;		
+	}
+	// .flexBtn {
+	// 	display: flex!important;
+	// }
+	.angle {
+		font-size: 40px;
+		font-weight: bold;
+	}
+}
+.flexBtns {
+	display: flex;
+}
+.showPrevBtn {
+	justify-content: space-between;
+	.prev {
+		display: flex!important;
+	}
+}
+}
+}
